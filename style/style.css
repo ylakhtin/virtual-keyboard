@@ -1,0 +1,45 @@
+.wrapper {
+  margin: auto;
+  max-width: 80%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  padding: 1rem;
+  color: white;
+  background-color: gray;
+  margin: 0.5rem;
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  position: relative;
+  border: 2px solid white;
+}
+
+.button:active,
+.key-pressed {
+  color: blue;
+  border: 2px solid red;
+}
+
+.button-space {
+  min-width: 27%;
+}
+
+.alternate-key {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding-left: 0.25rem;
+  padding-top: 0.25rem;
+}
