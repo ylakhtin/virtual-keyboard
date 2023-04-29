@@ -2,14 +2,11 @@ import keyboard from "./keyboard.js";
 
 function listenKeys(){
   addEventListener("keydown", (event)=>{
-    console.log(event.key);
+    document.querySelector("textarea").focus();
     // Find the keyboard key that was pressed
     keyboard.forEach(element => {
       element.forEach(elem => {
         if ((elem.main === event.key) || (elem.key === event.key)){
-          console.log(event);
-          console.log(event.key);
-          console.log(event.code);
           if (((event.key === 'Shift') && (event.code === 'ShiftRight')) || 
           ((event.key === 'Control') && (event.code === 'ControlRight')) || 
           ((event.key === 'Alt') && (event.code === 'AltRight'))) {
@@ -23,14 +20,10 @@ function listenKeys(){
   });
 
   addEventListener("keyup", (event)=>{
-    console.log(event.key);
-    // Find the keyboard key that was pressed
+    // Find the keyboard key that was released
     keyboard.forEach(element => {
       element.forEach(elem => {
         if ((elem.main === event.key) || (elem.key === event.key)){
-          console.log(event);
-          console.log(event.key);
-          console.log(event.code);
           if (((event.key === 'Shift') && (event.code === 'ShiftRight')) || 
           ((event.key === 'Control') && (event.code === 'ControlRight')) || 
           ((event.key === 'Alt') && (event.code === 'AltRight'))) {

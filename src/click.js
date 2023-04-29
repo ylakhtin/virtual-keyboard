@@ -1,7 +1,9 @@
-function processClick(key){
+async function processClick(key){
   let text = document.querySelector("textarea");
   if (key.type === "normal"){
-    text.textContent += key.main.toLowerCase();
+    let position = text.selectionStart;
+    let temp1 = text.value.substring(0, position) + key.main.toLowerCase() + text.value.substring(position, text.value.length);
+    text.value = temp1;
   }
 }
 
