@@ -21,6 +21,10 @@ function generatePage(){
     div.classList.add("flex-row");
     wrapper.appendChild(div);
   });
+  // Generate notice
+  let notice = document.createElement("p");
+  notice.textContent = "При проверке прошу учесть, что при нажатии клавиши 'Alt' просиходит изменение фокуса, что является стандартным задекларированным поведением внутри браузера. После нажатия 'Alt' необходимо вернуть вручную фокус чтобы продолжить использование виртуальной клавиатуры";
+  wrapper.appendChild(notice);
 }
 
 function printElement(key, row){
