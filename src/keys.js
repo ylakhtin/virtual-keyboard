@@ -1,4 +1,5 @@
 import keyboard from "./keyboard.js";
+import putSymbol from "./click.js";
 
 function addPressedStyle(name, order = 0) {
   let target = document.querySelectorAll(".button");
@@ -55,6 +56,10 @@ function listenKeys() {
         }
       });
     });
+    if (event.key === "Tab") {
+      event.preventDefault();
+      putSymbol(document.querySelector("textarea"), document.querySelector("textarea").selectionStart, "\u0009");
+    }
   });
 
   window.addEventListener("keyup", (event)=>{

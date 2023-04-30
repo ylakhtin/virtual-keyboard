@@ -1,6 +1,9 @@
 import keyboard from "./keyboard.js";
 import processClick from "./click.js";
 
+const WIDTH = 130;
+const HEIGHT = 15;
+
 function printElement(key, row) {
   // Add parent div
   let parent = document.createElement("div");
@@ -18,6 +21,9 @@ function printElement(key, row) {
     let newAltKey = document.createElement("div");
     newAltKey.classList.add("alternate-key");
     newAltKey.textContent = key.secondary;
+    if (key.key === "CapsLock") {
+      newAltKey.classList.add("caps-lock-off");
+    }
     parent.appendChild(newAltKey);
   }
   // Process key clicks
@@ -35,8 +41,8 @@ function generatePage() {
   wrapper.classList.add("flex-column");
   // Add text area
   let text = document.createElement("textarea");
-  text.cols = 130;
-  text.rows = 15;
+  text.cols = WIDTH;
+  text.rows = HEIGHT;
   text.classList.add("text-area");
   wrapper.appendChild(text);
   text.focus();
@@ -53,3 +59,4 @@ function generatePage() {
 }
 
 export default generatePage;
+export { WIDTH };

@@ -29,7 +29,7 @@ let keyboard = [
     main: "Backspace", secondary: "none", type: "functional", key: "Backspace"
   }],
   [{
-    main: "Tab", secondary: "none", type: "functional", key: "Tab"
+    main: "Tab", secondary: "none", type: "service", key: "Tab"
   }, {
     main: "Q", secondary: "none", type: "normal", key: "q"
   }, {
@@ -60,7 +60,7 @@ let keyboard = [
     main: "Del", secondary: "none", type: "functional", key: "Delete"
   }],
   [{
-    main: "Caps Lock", secondary: "none", type: "functional", key: "CapsLock"
+    main: "Caps Lock", secondary: "\u2022", type: "functional", key: "CapsLock"
   }, {
     main: "A", secondary: "none", type: "normal", key: "a"
   }, {
