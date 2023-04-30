@@ -54,10 +54,29 @@
   padding-top: 0.25rem;
 }
 
+.alternate-language {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding-right: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .caps-lock-off {
   color:red;
 }
 
 .caps-lock-on {
   color: greenyellow;
+}
+
+.language {
+  padding: 10px;
+  border: 2px solid black;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.activated {
+  color: orange;
 }

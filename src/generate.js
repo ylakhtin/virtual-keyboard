@@ -26,6 +26,13 @@ function printElement(key, row) {
     }
     parent.appendChild(newAltKey);
   }
+  // Add second language symbols to buttons
+  if (key.lang !== "none") {
+    let newAltKey = document.createElement("div");
+    newAltKey.classList.add("alternate-language");
+    newAltKey.textContent = key.lang;
+    parent.appendChild(newAltKey);
+  }
   // Process key clicks
   parent.addEventListener("click", ()=> {
     processClick(key);
@@ -34,6 +41,12 @@ function printElement(key, row) {
 }
 
 function generatePage() {
+  // Set default values
+  if (!localStorage.getItem("lang")) {
+    localStorage.setItem("lang", "EN");
+  }
+  localStorage.setItem("ShiftRight", "off");
+  localStorage.setItem("ShiftLeft", "off");
   // Add wrapper
   document.body.appendChild(document.createElement("div"));
   let wrapper = document.querySelector("div");
@@ -56,6 +69,21 @@ function generatePage() {
     div.classList.add("flex-row");
     wrapper.appendChild(div);
   });
+  // Add language indicator
+  let lang = document.createElement("div");
+  lang.classList.add("language");
+  lang.textContent = localStorage.getItem("lang");
+  lang.addEventListener("click", ()=>{
+    console.log("click");
+    if (lang.textContent === "EN") {
+      lang.textContent = "RU";
+      localStorage.setItem("lang", "RU");
+    } else {
+      lang.textContent = "EN";
+      localStorage.setItem("lang", "EN");
+    }
+  });
+  wrapper.appendChild(lang);
 }
 
 export default generatePage;

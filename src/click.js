@@ -1,4 +1,5 @@
 import { WIDTH } from "./generate.js";
+import { addPressedStyle, removePressedStyle } from "./toggleStyles.js";
 
 export function putSymbol(text, position, symbol) {
   let temp1 = text.value.substring(0, position)
@@ -56,13 +57,42 @@ function deleteSymbol(text, direction) {
   }
 }
 
+function toggleFunctional(key) {
+  if ((key.main === "Shift") && (key.key === "ShiftRight")) {
+    if (localStorage.getItem("ShiftRight") === "on") {
+      removePressedStyle(key.main, 1);
+      localStorage.setItem("ShiftRight", "off");
+    } else {
+      addPressedStyle("Shift", 1);
+      localStorage.setItem("ShiftRight", "on");
+    }
+  }
+  if ((key.main === "Shift") && (key.key === "ShiftLeft")) {
+    if (localStorage.getItem("ShiftLeft") === "on") {
+      removePressedStyle(key.main);
+      localStorage.setItem("ShiftLeft", "off");
+    } else {
+      addPressedStyle("Shift");
+      localStorage.setItem("ShiftLeft", "on");
+    }
+  }
+}
+
 function processClick(key) {
   let text = document.querySelector("textarea");
   if (key.type === "normal") {
-    if (document.querySelector(".caps-lock-off").classList.contains("caps-lock-on")) {
-      putSymbol(text, text.selectionStart, key.main.toUpperCase());
-    } else {
+    if ((document.querySelector(".caps-lock-off").classList.contains("caps-lock-on"))
+        || (localStorage.getItem("ShiftRight") === "on")
+        || (localStorage.getItem("ShiftLeft") === "on")) {
+      if (localStorage.getItem("lang") === "EN") {
+        putSymbol(text, text.selectionStart, key.main.toUpperCase());
+      } else if (key.lang !== "none") {
+        putSymbol(text, text.selectionStart, key.lang.toUpperCase());
+      }
+    } else if (localStorage.getItem("lang") === "EN") {
       putSymbol(text, text.selectionStart, key.main.toLowerCase());
+    } else if (key.lang !== "none") {
+      putSymbol(text, text.selectionStart, key.lang.toLowerCase());
     }
   } else if (key.main === "Tab") {
     putSymbol(text, text.selectionStart, "\u0009");
@@ -82,6 +112,8 @@ function processClick(key) {
     deleteSymbol(text, "right");
   } else if (key.key === "Enter") {
     putSymbol(text, text.selectionStart, "\n\r");
+  } else if (key.main === "Shift") {
+    toggleFunctional(key);
   }
 }
 
