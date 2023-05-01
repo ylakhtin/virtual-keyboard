@@ -1,0 +1,82 @@
+.wrapper {
+  margin: auto;
+  max-width: 80%;
+}
+
+.text-area {
+  border-width: 2px;
+  border-color: black;
+  border-radius: 4px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.parent {
+  position: relative;
+  color: white;
+  margin: 0.25rem;
+}
+
+.button {
+  padding: 1rem;
+  background-color: gray;
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  position: relative;
+  border: 2px solid white;
+}
+
+.button:active,
+.key-pressed {
+  color: blue;
+  border: 2px solid red;
+}
+
+.button-space {
+  min-width: 30%;
+}
+
+.alternate-key {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding-left: 0.25rem;
+  padding-top: 0.25rem;
+}
+
+.alternate-language {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding-right: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.caps-lock-off {
+  color:red;
+}
+
+.caps-lock-on {
+  color: greenyellow;
+}
+
+.language {
+  padding: 10px;
+  border: 2px solid black;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.activated {
+  color: orange;
+}
