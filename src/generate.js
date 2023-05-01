@@ -74,7 +74,6 @@ function generatePage() {
   lang.classList.add("language");
   lang.textContent = localStorage.getItem("lang");
   lang.addEventListener("click", ()=>{
-    console.log("click");
     if (lang.textContent === "EN") {
       lang.textContent = "RU";
       localStorage.setItem("lang", "RU");
